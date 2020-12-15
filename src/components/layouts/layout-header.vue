@@ -1,0 +1,35 @@
+<template>
+
+	<header class="layout-header">
+
+		<div class="layout-header__wrap">
+			<svgicon name="settings" :fill="false" color="black" width="30"/>
+		</div>
+
+	</header>
+</template>
+
+<script>
+	export default {
+		name: "layout-header"
+	}
+</script>
+
+<style lang="scss">
+	.layout-header {
+
+		position: fixed;
+		top: 32px;
+		left: 300px;
+		max-width: 400px;
+
+		&__wrap {
+			width: 100%;
+			display: flex;
+			/*position: absolute;*/
+
+			justify-content: flex-end;
+		}
+	}
+
+</style>

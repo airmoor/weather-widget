@@ -5,16 +5,14 @@
 			<svgicon width="150" :name="icon" original/>
 			<h1>{{weather.temp }} &deg;C</h1>
 		</div>
-
 		<p>Feels like {{weather.feelsLike}} &deg;C.
 			<span class="weather-card__description">{{weather.description}}</span>
 		</p>
-
 		<p>Visibility: {{weather.visibility}}</p>
-		<p>Wind:
+		<div>Wind:
 			<svgicon name="arrow" color="black" width="16" :style="arrowStyle" />
 			{{weather.wind.speed}} m/s
-		</p>
+		</div>
 	</div>
 </template>
 

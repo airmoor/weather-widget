@@ -1,9 +1,10 @@
 <template>
 	<div class="home">
-<!--		<layout-header/>-->
-		<div v-for="(weather, index) of weatherData" :key="index">
-			<WeatherCard :weather="weather"/>
-		</div>
+		<transition-group type="transition" :name="'flip-list'">
+			<div v-for="(weather, index) of weatherData" :key="index">
+				<WeatherCard :weather="weather"/>
+			</div>
+		</transition-group>
 	</div>
 </template>
 
@@ -17,9 +18,7 @@
 		name: "home",
 		components: { WeatherCard},
 		data: () => ({
-			// defaultCities: ['Moscow', 'Los Angeles'],
-			// cities: [],
-			// weatherData: []
+
 		}),
 		computed: {
 			cities: {
@@ -51,14 +50,11 @@
 
 		},
 		methods: {
-			checkedGetWeather (city) {
-				// getWeather
-			},
 			getWeather(city) {
 				if (!this.weatherCities.includes(city)) {
 					axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.KEY}`)
 						.then((response) => {
-							console.log(response);
+							// console.log('response: ',response);
 							let data = response.data;
 							let weather = {
 								id: data.id,
@@ -75,13 +71,9 @@
 								humidity:data.humidity || null,
 								cloudsPercent:  data.clouds.all || null,
 								country: data.sys.country || null
-
 							};
 							this.weatherCities.unshift(city.name);
-							console.log('weather', weather)
 							this.weatherData.unshift(weather)
-
-
 						})
 						.catch((error) => {
 							// handle error
@@ -94,46 +86,18 @@
 						});
 				}
 				//https://openweathermap.org/current#current_JSON
-
 			},
 			isEquals (a1, a2) {
 				return a1.length == a2.length && a1.every((v,i)=>v === a2[i])
 			},
 			sort() {
-				// var items = [
-				// 	{id: '1150', title: 'im tyler'},
-				// 	{id: '1195', title: 'im josh'}
-				// ];
-				//
-				// var sortArray = [
-				// 	'1195',
-				// 	'1150'
-				// ];
-				//
-				// items.sort((a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id));
-				//
-				// console.log(items);
-				this.weatherData=this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
-
-				console.log(this.weatherData);
-				this.weatherData.forEach(el=>{
-					console.log('!!',el.name);
-				})
-
+				this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
 			}
 		},
 
-
 		mounted() {
-			// this.cities.forEach(city => {
-			// 	this.getWeather(city)
-			// });
 
-			if (this.isEquals(this.cities,this.weatherCities)) {
-				console.log('true')
-			}
-			else {
-				console.log('false')
+			if (!this.isEquals(this.cities,this.weatherCities)) {
 				this.weatherData.splice(0, this.weatherData.length)
 				this.weatherCities.splice(0, this.weatherCities.length)
 				this.cities.forEach(city => {
@@ -141,20 +105,16 @@
 				});
 				this.sort();
 			}
-
-
-
 		},
-		// updated() {
-		// 	this.cities.forEach(city => {
-		// 		this.getWeather(city)
-		// 	});
-		// }
+
 	}
 </script>
 
 <style lang="scss">
 .home{
-
+	.flex-center{
+		display: flex;
+		align-items: center;
+	}
 }
 </style>

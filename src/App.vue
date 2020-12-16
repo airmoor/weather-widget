@@ -1,13 +1,12 @@
 <template>
 	<div id="app">
-		<layout-header/>
-		<transition name="fade" mode="out-in">
-		<layout-menu v-if="isMenuOpen"/>
-
-		<main v-else>
-			<router-view/>
+		<main class="main">
+			<layout-header/>
+			<transition name="fade" mode="out-in">
+				<layout-menu v-if="isMenuOpen"/>
+				<router-view v-else/>
+			</transition>
 		</main>
-		</transition>
 	</div>
 </template>
 
@@ -29,12 +28,15 @@
 <style lang="scss">
 	#app {
 		font-family: Avenir, Helvetica, Arial, sans-serif;
-		/*max-width: 350px;*/
+		max-width: 350px;
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
 		display: flex;
 		justify-content: center;
+		.main{
+			width: 100%;
+		}
 	}
 	.fade-enter-active, .fade-leave-active {
 		transition: opacity 0.3s;

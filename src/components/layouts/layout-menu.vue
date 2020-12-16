@@ -1,6 +1,7 @@
 <template>
+<!--	https://github.com/SortableJS/Vue.Draggable-->
 	<div class="layout-menu">
-		<h1 class="mb-3">Settings</h1>
+		<h3 class="mb-3">Settings</h3>
 
 		<b-form @submit.prevent="addCity">
 			<b-form-input
@@ -16,11 +17,13 @@
 			<transition-group type="transition" :name="'flip-list'">
 				<div v-for="city of cities" :key="city">
 					<div class="layout-menu__city">
-						<div class="layout-menu__city__title">
-							<svgicon class="mr-3" name="burger" color="black" width="14"/>
+						<div class="flex-center">
+							<div class="p-2 flex-center">
+								<svgicon class="mr-1" name="burger" color="black" width="14"/>
+							</div>
 							{{city}}
 						</div>
-						<div @click="removeCity(city)">
+						<div class="p-2" @click="removeCity(city)">
 							<svgicon name="trash" :fill="false" color="black" width="20"/>
 						</div>
 					</div>
@@ -41,9 +44,7 @@
 		data: () => ({
 			newCity: ''
 		}),
-		updated() {
-			console.log('cities', this.cities)
-		},
+
 		computed: {
 			cities: {
 				set(v) {
@@ -72,7 +73,7 @@
 		},
 		methods: {
 			sort() {
-				console.log('cities',this.cities)
+				// console.log('cities',this.cities)
 				this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
 			},
 			addCity() {
@@ -102,7 +103,6 @@
 
 <style lang="scss">
 	.layout-menu {
-		position: fixed;
 		z-index: 1;
 		box-shadow: 0px 16px 24px rgba(103, 110, 134, 0.1);
 		border-radius: 32px;
@@ -113,14 +113,11 @@
 			background: #f0f0f0;
 			display: flex;
 			justify-content: space-between;
-			padding:12px;
+			padding: 4px 12px;
 			border-radius: 4px;
 			margin:16px 0;
 			align-items: center;
-			&__title{
-				display: flex;
-				align-items: center;
-			}
+
 
 		}
 	}
@@ -129,6 +126,10 @@
 	}
 	.no-move {
 		transition: transform 0s;
+	}
+	.flex-center{
+		display: flex;
+		align-items: center;
 	}
 
 </style>

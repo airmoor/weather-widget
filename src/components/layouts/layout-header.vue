@@ -24,20 +24,22 @@
 
 <style lang="scss">
 	.layout-header {
-
 		position: fixed;
 		top: 32px;
-		right: 32px;
-		/*left: 300px;*/
-		max-width: 400px;
-
+		/*right: 32px;*/
+		/*width: 350px;*/
+		/*right:  calc(50vw + 32px);*/
+		/*width: calc(50vw + 32px);*/
+		/*height: 32px;*/
+		/*max-width: 400px;*/
+		z-index: 2;
+		/*position: absolute;*/
+		/*width: 100%;*/
+		left: calc(130px + 50vw);
 		&__wrap {
 			width: 100%;
 			display: flex;
-			/*position: absolute;*/
-
 			justify-content: flex-end;
 		}
 	}
-
 </style>

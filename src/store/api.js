@@ -6,7 +6,7 @@ export function getWeather(city) {
 	axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.KEY}`)
 
 		.then((response) => {
-			console.log(response);
+			console.log('response: ',response);
 			let data = response.data;
 			let weather = {
 				id: data.id,
@@ -26,7 +26,7 @@ export function getWeather(city) {
 
 			};
 			this.$store.state.weatherCities.push(city);
-			console.log('weather', weather)
+
 			this.$store.state.weatherData.push(weather)
 
 

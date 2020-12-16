@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from "../components/home";
 
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -11,8 +10,7 @@ const routes = [
     name: 'home',
     component: Home
   },
-
-]
+];
 
 const router = new VueRouter({
   mode: 'history',

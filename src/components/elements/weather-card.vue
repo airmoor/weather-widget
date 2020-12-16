@@ -11,8 +11,9 @@
 		</p>
 
 		<p>Visibility: {{weather.visibility}}</p>
-		<p>Wind:  {{weather.wind.speed}} m/s
+		<p>Wind:
 			<svgicon name="arrow" color="black" width="16" :style="arrowStyle" />
+			{{weather.wind.speed}} m/s
 		</p>
 	</div>
 </template>
@@ -29,11 +30,14 @@
 					case 'Snow':  return 'snow';
 					case 'Clouds': return 'cloudy';
 					case 'Clear': return 'sunny';
+					case 'Haze' : return 'haze';
 					default: return 'suncloud';
 				}
 			},
 			arrowStyle() {
+				if (this.weather && this.weather.wind && this.weather.wind.deg)
 				return { transform: `rotate(${this.weather.wind.deg}deg)`}
+				else return {}
 			}
 		}
 	}
@@ -41,7 +45,7 @@
 
 <style lang="scss">
 .weather-card{
-	box-shadow: 0px 16px 24px rgba(103, 110, 134, 0.1);
+	box-shadow: 0 16px 24px rgba(103, 110, 134, 0.1);
 	border-radius: 32px;
 	padding:32px;
 	margin:16px auto;

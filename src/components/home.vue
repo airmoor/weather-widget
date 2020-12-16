@@ -48,12 +48,7 @@
 			}
 		},
 		watch:  {
-			cities() {
-				console.log(this.cities)
-				this.cities.forEach(city => {
-					this.getWeather(city)
-				});
-			}
+
 		},
 		methods: {
 			checkedGetWeather (city) {
@@ -61,9 +56,7 @@
 			},
 			getWeather(city) {
 				if (!this.weatherCities.includes(city)) {
-
 					axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.KEY}`)
-
 						.then((response) => {
 							console.log(response);
 							let data = response.data;
@@ -84,7 +77,7 @@
 								country: data.sys.country || null
 
 							};
-							this.weatherCities.unshift(city);
+							this.weatherCities.unshift(city.name);
 							console.log('weather', weather)
 							this.weatherData.unshift(weather)
 
@@ -96,40 +89,72 @@
 						})
 
 						.then(() => {
+							this.weatherData=this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
 							// always executed
 						});
 				}
 				//https://openweathermap.org/current#current_JSON
 
+			},
+			isEquals (a1, a2) {
+				return a1.length == a2.length && a1.every((v,i)=>v === a2[i])
+			},
+			sort() {
+				// var items = [
+				// 	{id: '1150', title: 'im tyler'},
+				// 	{id: '1195', title: 'im josh'}
+				// ];
+				//
+				// var sortArray = [
+				// 	'1195',
+				// 	'1150'
+				// ];
+				//
+				// items.sort((a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id));
+				//
+				// console.log(items);
+				this.weatherData=this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
+
+				console.log(this.weatherData);
+				this.weatherData.forEach(el=>{
+					console.log('!!',el.name);
+				})
+
 			}
 		},
 
+
 		mounted() {
-console.log('!!')
-			// this.defaultCities.forEach(city => {
-			// 	this.getWeather(city);
-			// 	console.log('++')
+			// this.cities.forEach(city => {
+			// 	this.getWeather(city)
 			// });
-			this.cities.forEach(city => {
-				this.getWeather(city)
-				console.log('--')
-			});
-			console.log('weatherData', this.weatherData)
+
+			if (this.isEquals(this.cities,this.weatherCities)) {
+				console.log('true')
+			}
+			else {
+				console.log('false')
+				this.weatherData.splice(0, this.weatherData.length)
+				this.weatherCities.splice(0, this.weatherCities.length)
+				this.cities.forEach(city => {
+					this.getWeather(city)
+				});
+				this.sort();
+			}
 
 
-			// this.getWeather(this.defaultCity)
 
-		}
+		},
+		// updated() {
+		// 	this.cities.forEach(city => {
+		// 		this.getWeather(city)
+		// 	});
+		// }
 	}
 </script>
 
 <style lang="scss">
 .home{
-	/*max-width: 350px;*/
-	/*width:100%;*/
-	/*margin-left: auto;*/
-	/*margin-right: auto;*/
-	/*position: absolute;*/
-	/*top:0*/
+
 }
 </style>

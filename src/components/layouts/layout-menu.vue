@@ -12,29 +12,38 @@
 			></b-form-input>
 		</b-form>
 
-		<div v-for="city of cities" :key="city">
-
-			<div class="layout-menu__city">
-				<div class="layout-menu__city__title">
-					<svgicon class="mr-3" name="burger" color="black" width="14"/>
-					{{city}}
+		<draggable v-model="cities" group="cities" @start="drag=true" @end="drag=false" @change="sort">
+			<transition-group type="transition" :name="'flip-list'">
+				<div v-for="city of cities" :key="city">
+					<div class="layout-menu__city">
+						<div class="layout-menu__city__title">
+							<svgicon class="mr-3" name="burger" color="black" width="14"/>
+							{{city}}
+						</div>
+						<div @click="removeCity(city)">
+							<svgicon name="trash" :fill="false" color="black" width="20"/>
+						</div>
+					</div>
 				</div>
-				<div @click="removeCity(city)">
-					<svgicon name="trash" :fill="false" color="black" width="20"/>
-				</div>
+			</transition-group>
+		</draggable>
 
-			</div>
-
-		</div>
 	</div>
 </template>
 
 <script>
+	import draggable from 'vuedraggable'
 	export default {
 		name: "layout-menu",
+		components: {
+			draggable,
+		},
 		data: () => ({
 			newCity: ''
 		}),
+		updated() {
+			console.log('cities', this.cities)
+		},
 		computed: {
 			cities: {
 				set(v) {
@@ -43,7 +52,8 @@
 				get() {
 					return this.$store.state.cities;
 				}
-			},weatherData: {
+			},
+			weatherData: {
 				set(v) {
 					this.$store.state.weatherData = v;
 				},
@@ -61,6 +71,10 @@
 			}
 		},
 		methods: {
+			sort() {
+				console.log('cities',this.cities)
+				this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
+			},
 			addCity() {
 				if (!this.cities.includes(this.newCity))
 					this.cities.unshift(this.newCity);
@@ -110,4 +124,11 @@
 
 		}
 	}
+	.flip-list-move {
+		transition: transform 0.5s;
+	}
+	.no-move {
+		transition: transform 0s;
+	}
+
 </style>

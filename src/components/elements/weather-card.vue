@@ -31,12 +31,14 @@
 					case 'Clouds': return 'cloudy';
 					case 'Clear': return 'sunny';
 					case 'Haze' : return 'haze';
+					case 'Drizzle': return 'drizzle';
+					case 'Mist': return 'mist';
 					default: return 'suncloud';
 				}
 			},
 			arrowStyle() {
 				if (this.weather && this.weather.wind && this.weather.wind.deg)
-				return { transform: `rotate(${this.weather.wind.deg}deg)`}
+				return { transform: `rotate(${this.weather.wind.deg}deg)`};
 				else return {}
 			}
 		}

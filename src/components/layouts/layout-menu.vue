@@ -13,13 +13,13 @@
 			></b-form-input>
 		</b-form>
 
-		<draggable v-model="cities" group="cities" @start="drag=true" @end="drag=false" @change="sort">
+		<draggable v-model="cities" group="cities" handle=".handle" @start="drag=true" @end="drag=false" @change="sort">
 			<transition-group type="transition" :name="'flip-list'">
 				<div v-for="city of cities" :key="city">
 					<div class="layout-menu__city">
 						<div class="flex-center">
 							<div class="p-2 flex-center">
-								<svgicon class="mr-1" name="burger" color="black" width="14"/>
+								<svgicon class="mr-1 handle" name="burger" color="black" width="14"/>
 							</div>
 							{{city}}
 						</div>
@@ -74,27 +74,31 @@
 		methods: {
 			sort() {
 				// console.log('cities',this.cities)
+				localStorage.setItem('cities', this.cities);
 				this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
 			},
 			addCity() {
 				if (!this.cities.includes(this.newCity))
 					this.cities.unshift(this.newCity);
-				this.newCity = ''
+				this.newCity = '';
+				// localStorage.setItem('test', 1);
+				localStorage.setItem('cities', this.cities);
+				// localStorage.user = JSON.stringify({name: "John"});
 			},
 			removeCity(city){
-				let index = this.cities.indexOf(city)
+				let index = this.cities.indexOf(city);
 				if (index > -1)
 				this.cities.splice(index,1);
 
-				let index2 = this.weatherCities.indexOf(city)
+				let index2 = this.weatherCities.indexOf(city);
 				if (index > -1)
-					this.weatherCities.splice(index2,1)
+					this.weatherCities.splice(index2,1);
 
-				let index3 = this.weatherData.findIndex(el=>el.name===city)
+				let index3 = this.weatherData.findIndex(el=>el.name===city);
 				if (index > -1)
 					this.weatherData.splice(index3,1)
 
-
+				localStorage.setItem('cities', this.cities);
 
 			}
 		}
@@ -130,6 +134,9 @@
 	.flex-center{
 		display: flex;
 		align-items: center;
+	}
+	.handle{
+		cursor: grab;
 	}
 
 </style>

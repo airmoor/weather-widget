@@ -1,3 +1,4 @@
+/*
 import axios from "axios";
 import config from '../config';
 
@@ -40,6 +41,4 @@ export function getWeather(city) {
 			// always executed
 		});
 }
-
-
-
+*/

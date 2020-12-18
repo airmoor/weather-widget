@@ -1,3 +1,5 @@
 export default {
-	KEY: '9e3dbde41201ddad8574d430763a36bf'
+	OPEN_WEATHER_KEY: '9e3dbde41201ddad8574d430763a36bf',
+	YANDEX_MAP_KEY:'d3e66488-d056-439d-be6f-2d383463adab'
+
 }

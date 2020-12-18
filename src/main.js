@@ -5,16 +5,17 @@ import router from './router'
 import store from './store'
 import 'document-register-element/build/document-register-element'
 import './plugins/svgicon';
-// import vuetify from './plugins/vuetify';
+
 import { BootstrapVue } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.config.productionTip = false;
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
+
 //for npm run build -> widget
 import vueCustomElement from 'vue-custom-element'
 Vue.use(vueCustomElement);
-// App.store = store
+App.store = store;
 App.router = router;
 Vue.customElement('vue-widget', App);
 

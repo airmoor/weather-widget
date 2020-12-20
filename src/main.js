@@ -6,6 +6,7 @@ import store from './store'
 import 'document-register-element/build/document-register-element'
 import './plugins/svgicon';
 import './plugins/bootstrap-vue';
+import './scss/index.scss';
 
 Vue.config.productionTip = false;
 
@@ -14,11 +15,11 @@ import vueCustomElement from 'vue-custom-element'
 Vue.use(vueCustomElement);
 App.store = store;
 App.router = router;
-Vue.customElement('vue-widget', App);
+Vue.customElement('weather-widget', App);
 
 // for npm run serve
-/*new Vue({
-	store,
-	router,
-	render: h => h(App)
-}).$mount('#app');*/
+// new Vue({
+// 	store,
+// 	router,
+// 	render: h => h(App)
+// }).$mount('#app');

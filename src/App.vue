@@ -5,7 +5,7 @@
 			<transition name="fade" mode="out-in">
 				<layout-menu v-if="isMenuOpen"/>
 				<Home v-else/>
-<!--				<router-view v-else/>-->
+				<!--				<router-view v-else/>-->
 			</transition>
 		</main>
 	</div>
@@ -35,29 +35,12 @@
 		margin-right: auto;
 		display: flex;
 		justify-content: center;
-		.main{
+
+		.main {
+			/*padding-top: 32px;*/
 			width: 100%;
+			position: relative;
 		}
 	}
-	.fade-enter-active, .fade-leave-active {
-		transition: opacity 0.3s;
-	}
-	.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-		opacity: 0;
-	}
-	.flip-list-move {
-		transition: transform 0.5s;
-	}
-	.no-move {
-		transition: transform 0s;
-	}
-	.flex-center{
-		display: flex;
-		align-items: center;
-	}
-	.handle{
-		cursor: grab;
-	}
-
 
 </style>

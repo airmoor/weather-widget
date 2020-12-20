@@ -27,10 +27,10 @@
 
 <style lang="scss">
 	.layout-header {
-		position: fixed;
+		/*position: fixed;*/
 		top: 32px;
 		z-index: 2;
-		left: calc(130px + 50vw);
+		margin-left: 300px;
 
 		&__wrap {
 			width: 100%;

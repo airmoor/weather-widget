@@ -27,22 +27,19 @@
 
 <style lang="scss">
 	.layout-header {
-		/*position: fixed;*/
-		/*top: 32px;*/
 		z-index: 2;
-		margin-left: 300px;
 		height: fit-content;
 
 		&__wrap {
-			width: 100%;
+			/*width: 100%;*/
 			display: flex;
 			justify-content: flex-end;
+			height: fit-content;
 		}
 
 		&__button {
 			cursor: pointer;
 			height: 30px;
-
 		}
 	}
 </style>

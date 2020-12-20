@@ -4,7 +4,7 @@
 			<svgicon class="layout-header__button"
 			         :name="isMenuOpen ? 'close' : 'settings'"
 			         :fill="isMenuOpen ? true : false"
-			         color="black" width="30"/>
+			         color="black" width="30" height="30"/>
 		</div>
 	</header>
 </template>

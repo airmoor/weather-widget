@@ -90,7 +90,6 @@
 							};
 
 							if (this.isCityIdExist(weather.id)) {
-								console.log(this.isCityIdExist(weather.id))
 								console.log('the city is already exists');
 								let index = this.cities.indexOf(city);
 								if (index > -1)
@@ -167,7 +166,6 @@
 				savedCities = savedCities.split(',');
 				this.cities = savedCities;
 				this.cities.forEach(city => {
-					console.log('city', city);
 					this.getWeather(city);
 				});
 			}

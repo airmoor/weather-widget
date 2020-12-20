@@ -34,6 +34,7 @@
 					case 'Haze' : return 'haze';
 					case 'Drizzle': return 'drizzle';
 					case 'Mist': return 'mist';
+					case 'Fog': return 'mist';
 					default: return 'suncloud';
 				}
 			},

@@ -8,7 +8,10 @@
 		<p>Feels like {{weather.feelsLike}} &deg;C.
 			<span class="weather-card__description">{{weather.description}}</span>
 		</p>
-		<p>Visibility: {{weather.visibility}}</p>
+		<p>Visibility:
+			<span v-if="weather.visibility>1000">{{weather.visibility/1000}} km</span>
+			<span v-else>{{weather.visibility}} m</span>
+		</p>
 		<div>Wind:
 			<svgicon name="arrow" color="black" width="16" :style="arrowStyle" />
 			{{weather.wind.speed}} m/s

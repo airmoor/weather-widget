@@ -4,7 +4,8 @@
 			<layout-header/>
 			<transition name="fade" mode="out-in">
 				<layout-menu v-if="isMenuOpen"/>
-				<router-view v-else/>
+				<Home v-else/>
+<!--				<router-view v-else/>-->
 			</transition>
 		</main>
 	</div>
@@ -13,9 +14,10 @@
 <script>
 	import LayoutHeader from "./components/layouts/layout-header";
 	import LayoutMenu from "./components/layouts/layout-menu";
+	import Home from "./components/home";
 
 	export default {
-		components: {LayoutMenu, LayoutHeader},
+		components: {Home, LayoutMenu, LayoutHeader},
 		computed: {
 			isMenuOpen() {
 				return this.$store.state.isMenuOpen;
@@ -23,7 +25,6 @@
 		}
 	}
 </script>
-
 
 <style lang="scss">
 	#app {
@@ -44,4 +45,19 @@
 	.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
 		opacity: 0;
 	}
+	.flip-list-move {
+		transition: transform 0.5s;
+	}
+	.no-move {
+		transition: transform 0s;
+	}
+	.flex-center{
+		display: flex;
+		align-items: center;
+	}
+	.handle{
+		cursor: grab;
+	}
+
+
 </style>

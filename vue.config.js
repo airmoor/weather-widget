@@ -1,23 +1,13 @@
-// module.exports = {
-//   "configureWebpack": {
-//     "plugins": [
-//       {
-//         "options": {
-//           "maxChunks": 1
-//         }
-//       }
-//     ]
-//   },
-//   "filenameHashing": false,
-// }
-
 module.exports = {
   configureWebpack: {
     optimization: {
       splitChunks: false
+    },
+    output: {
+      filename: 'widget.js',
     }
   },
   css: {
     extract: false,
   },
-}
+};

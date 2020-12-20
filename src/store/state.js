@@ -1,7 +1,7 @@
 let state = {
 	// основной обхект ответа от БЕ
 	isMenuOpen: false,
-	cities: ['Moscow', 'Los Angeles'],
+	cities: [],
 	weatherData: [],
 	weatherCities: [],
 };

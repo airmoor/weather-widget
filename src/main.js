@@ -13,16 +13,22 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
 //for npm run build -> widget
-import vueCustomElement from 'vue-custom-element'
-Vue.use(vueCustomElement);
-App.store = store;
-App.router = router;
-Vue.customElement('vue-widget', App);
+// import vueCustomElement from 'vue-custom-element'
+// Vue.use(vueCustomElement);
+// App.store = store;
+// App.router = router;
+// Vue.customElement('vue-widget', App);
 
 // for npm run serve
-/*
 new Vue({
 	store,
 	router,
 	render: h => h(App)
-}).$mount('#app');*/
+}).$mount('#app');
+
+
+//Initialize the Vue app
+// var app = new Vue({
+// 	el: '#my-vue-widget',
+// 	template: '<App/>'
+// })

@@ -103,7 +103,6 @@
 								this.cities[this.cities.indexOf(city)] = weather.name;
 								localStorage.setItem('cities', this.cities);
 							}
-
 						})
 						.catch((error) => {
 							// handle error
@@ -121,7 +120,6 @@
 
 						.then(() => {
 							this.weatherData = this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
-							// always executed
 						});
 				}
 				//https://openweathermap.org/current#current_JSON

@@ -9,7 +9,6 @@ import './plugins/bootstrap-vue';
 
 Vue.config.productionTip = false;
 
-
 //for npm run build -> widget
 import vueCustomElement from 'vue-custom-element'
 Vue.use(vueCustomElement);

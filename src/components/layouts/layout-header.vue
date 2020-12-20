@@ -28,13 +28,13 @@
 <style lang="scss">
 	.layout-header {
 		z-index: 2;
-		height: fit-content;
+		height: 30px;
 
 		&__wrap {
 			/*width: 100%;*/
 			display: flex;
 			justify-content: flex-end;
-			height: fit-content;
+			height: 30px;
 		}
 
 		&__button {

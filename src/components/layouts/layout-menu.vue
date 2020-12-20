@@ -71,14 +71,6 @@
 					return this.$store.state.weatherData;
 				}
 			},
-			weatherCities: {
-				set(v) {
-					this.$store.state.weatherCities = v;
-				},
-				get() {
-					return this.$store.state.weatherCities;
-				}
-			}
 		},
 		methods: {
 			sort() {
@@ -101,10 +93,6 @@
 				let index = this.cities.indexOf(city);
 				if (index > -1)
 				this.cities.splice(index,1);
-
-				index = this.weatherCities.indexOf(city);
-				if (index > -1)
-					this.weatherCities.splice(index, 1);
 
 				index = this.weatherData.findIndex(el=>el.name===city);
 				if (index > -1)

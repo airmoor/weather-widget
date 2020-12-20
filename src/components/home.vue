@@ -43,14 +43,6 @@
 					return this.$store.state.weatherData;
 				}
 			},
-			weatherCities: {
-				set(v) {
-					this.$store.state.weatherCities = v;
-				},
-				get() {
-					return this.$store.state.weatherCities;
-				}
-			}
 		},
 		watch: {},
 		methods: {
@@ -62,6 +54,7 @@
 							console.log('geocode-maps response: ', response)
 							let userLocationCity = response.data.response.GeoObjectCollection.featureMember[0].GeoObject.name || null;
 							localStorage.setItem('cities', userLocationCity);
+							this.cities.push(userLocationCity);
 							this.getWeather(userLocationCity)
 						}).catch((err) => {
 							this.showAlert = true;
@@ -74,7 +67,7 @@
 				}
 			},
 			getWeather(city) {
-				if (!this.weatherCities.includes(city) && !this.isCityExist(city)) {
+				if (!this.isCityExist(city)) {
 					axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.OPEN_WEATHER_KEY}`)
 						.then((response) => {
 							// console.log('response: ',response);
@@ -96,8 +89,16 @@
 								country: data.sys.country || null
 							};
 
-							if (this.isCityIdExist(weather.id) === false) {
-								this.weatherCities.unshift(weather.name);
+							if (this.isCityIdExist(weather.id)) {
+								console.log(this.isCityIdExist(weather.id))
+								console.log('the city is already exists');
+								let index = this.cities.indexOf(city);
+								if (index > -1)
+									this.cities.splice(index,1);
+								localStorage.setItem('cities', this.cities);
+
+							}
+							else {
 								this.weatherData.unshift(weather);
 								this.cities[this.cities.indexOf(city)] = weather.name;
 								localStorage.setItem('cities', this.cities);
@@ -126,20 +127,22 @@
 				//https://openweathermap.org/current#current_JSON
 			},
 			isCityExist(city) {
+				let isExist = false;
 				this.weatherData.forEach(el=>{
 					if (el.name.toLowerCase() === city.toLowerCase()) {
-						return true;
+						isExist = true;
 					}
 				});
-				return false;
+				return isExist;
 			},
 			isCityIdExist(id) {
+				let isExist = false;
 				this.weatherData.forEach(el=>{
 					if (el.id === id) {
-						return true;
+						isExist=true
 					}
 				});
-				return false;
+				return isExist;
 			},
 			sort() {
 				this.weatherData.sort((a, b) => this.cities.indexOf(a.name) - this.cities.indexOf(b.name));
@@ -171,10 +174,6 @@
 				});
 			}
 			else this.getLocation();
-			/*console.log('localStorage',localStorage.getItem('cities'))
-			console.log('cities',this.cities)
-			console.log('weatherData',this.weatherData)
-			console.log('weatherCities',this.weatherCities)*/
 		},
 	}
 </script>

@@ -3,7 +3,6 @@ let state = {
 	isMenuOpen: false,
 	cities: [],
 	weatherData: [],
-	weatherCities: [],
 };
 
 export default state;

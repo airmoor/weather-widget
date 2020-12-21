@@ -4,8 +4,6 @@
 ## Live demo 
 https://airmoor.github.io/
 Source of the working demo is located in sample.html
-![screenshotes](ttps://github.com/airmoor/weather-widget/blob/master/screenshots/1.jpg)
-![screenshotes](ttps://github.com/airmoor/weather-widget/blob/master/screenshots/2.jpg)
 
 ## Usage example
 You can add this widget to your website as simple as inserting the snippet into an HTML-page:
@@ -20,6 +18,10 @@ You can add this widget to your website as simple as inserting the snippet into 
 ## API
 * https://openweathermap.org/
 * https://yandex.ru/dev/maps/geocoder/
+
+## Screenshots
+![screenshotes](https://github.com/airmoor/weather-widget/blob/master/screenshotes/1.jpg)
+![screenshotes](https://github.com/airmoor/weather-widget/blob/master/screenshotes/2.jpg)
 
 ## Project setup
 ```
@@ -46,5 +48,3 @@ npm run test
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

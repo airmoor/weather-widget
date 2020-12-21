@@ -2,7 +2,7 @@
 
 
 ## Live demo 
-https://airmoor.github.io/
+https://airmoor.github.io/ <br>
 Source of the working demo is located in sample.html
 
 ## Usage example
@@ -20,7 +20,7 @@ You can add this widget to your website as simple as inserting the snippet into 
 * https://yandex.ru/dev/maps/geocoder/
 
 ## Screenshots
-![screenshotes](https://github.com/airmoor/weather-widget/blob/master/screenshotes/1.jpg)
+![screenshotes](https://github.com/airmoor/weather-widget/blob/master/screenshotes/1.jpg) 
 ![screenshotes](https://github.com/airmoor/weather-widget/blob/master/screenshotes/2.jpg)
 
 ## Project setup
